@@ -1,0 +1,26 @@
+appId: com.electron.app
+productName: my-electron-app
+directories:
+  buildResources: build
+files:
+  - "!**/.vscode/*"
+  - "!src/*"
+  - "!electron.vite.config.{js,ts,mjs,cjs}"
+  - "!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}"
+  - "!{.env,.env.*,.editorconfig,.gitignore}"
+  - "!{run,rebuild,run.cmd,rebuild.cmd}"
+  - "!tsconfig.*.json"
+asarUnpack:
+  - resources/**
+  - "node_modules/**/*.node"
+  - "node_modules/better-sqlite3/**"
+win:
+  executableName: my-electron-app
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  artifactName: ${productName}-${version}-setup.${ext}
